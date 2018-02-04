@@ -1,12 +1,14 @@
 langue: python
 services:
- -docker
+ - docker
 python:
   - "2.7"
 install:
   - make deps
 script:
   - make test
-  - make lint/
   - make docker_build
-  - make docker_push
+deploy:
+  provider: heroku
+  app: rocky-beach-56935
+  api key: ${HEROKU_API_KEY}
